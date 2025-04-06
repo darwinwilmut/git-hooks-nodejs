@@ -1,0 +1,3 @@
+#!/bin/bash
+
+echo "[Info]  ✅ Thanks for committing, $GIT_AUTHOR_NAME!"

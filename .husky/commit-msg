@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# Get the commit message from the file passed as argument
+commit_msg_file="$1"
+commit_msg=$(cat "$commit_msg_file")
+
+# Regex pattern to match JIRA tickets like DO-12, ABC-123, etc.
+jira_regex='[A-Z]{2,10}-[0-9]+'
+
+if [[ "$commit_msg" =~ $jira_regex ]]; then
+    echo "[Info]  ✅ Commit message contains a valid JIRA ticket: '$commit_msg'"
+    exit 0
+else
+    echo "[Error] ❌ Commit message does not contain a valid JIRA ticket (e.g., ABC-123)."
+    echo "[Info]  📝 Please include a JIRA ticket in your commit message."
+    exit 1
+fi

@@ -1,0 +1,14 @@
+#!/bin/bash
+
+# Define the allowed email domain pattern
+email_regex='@talentship\.io$'
+email="$GIT_AUTHOR_EMAIL"
+
+# Check if the email matches the pattern
+if [[ "$email" =~ $email_regex ]]; then
+    echo "[Info]  ✅ Email check passed: '$email' matches the required policy."
+
+else
+    echo "[Error] ❌ Email check failed: '$email' does not match the required policy (@talentship.io)."
+    exit 1
+fi
